@@ -1,0 +1,51 @@
+//In this code, the snowfall from the ERA5-land is extracted using coordinates of the drilling mud sumps
+//First, ERA5-land is imported from the GEE database and the table with the drilling mud sumps coordinates
+//is imported. As two drilling mud sumps was out of range of the ERA5-land, two points were created
+//at the nearest gridcell
+var era5_complete = ee.ImageCollection("ECMWF/ERA5_LAND/MONTHLY_AGGR"),
+    table2 = ee.FeatureCollection("projects/ee-asal6/assets/large_set_dms"),
+    Sikuc11 = /* color: #98ff00 */ee.Geometry.Point([-133.54953663731442, 69.00124465901128]),
+    Parsond20 = /* color: #0b4a8b */ee.Geometry.Point([-133.54960531044358, 68.9862351154604]);
+// The next code is chosing the correct band
+var Snowfall =  era5_complete.select('snowfall_sum');
+
+// The following code is filtering on the date
+var annualmean = Snowfall.filter(ee.Filter.date('1979-01-01', '2022-01-01'));
+
+// The following code if for creating and showing a map of the snowfall on 1-1-1979 
+// and the drilling mud sump locations
+var year_1979 = Snowfall.filter(ee.Filter.date('1979-01-01'));
+var visTp = {
+  min: 0.0,
+  max: 0.05,
+  palette: ['ffffff', '00ffff', '0080ff', 'da00ff', 'ffa400', 'ff0000']
+};
+Map.addLayer(year_1979, visTp);
+Map.addLayer(table2, {}, 'default display');
+
+// The following code is for extracting the snowfall data for each drilling mud sump
+// and is done by iterating over every Image in the ImageCollection. The results
+// will be a FeatureCollection in a FeatureCollection.
+var regionalSnow = annualmean.map(function(img) {
+  return img.reduceRegions({
+    collection: table2,
+    reducer: ee.Reducer.mean(),
+    scale: 100,
+    crs: 'EPSG:4326'
+  }).map(function(f) {
+      return f.set('Year', img.get('Year'));
+  });
+
+});
+
+// The following code is to flatten the FeatureCollecion in a FeatureCollection to a
+// single FeatureCollection in prepartion for the export to Google Drive.
+var flattenregionalS = regionalSnow.flatten();
+
+// The following code is for exporting the FeatureCollection to Google drive in a
+// csv file.
+Export.table.toDrive(flattenregionalS,
+"yearly", //my task
+"GEE_Folder", //my export folder in Google Drive
+"snowmelt_data",  //file name
+"CSV"); //file type
