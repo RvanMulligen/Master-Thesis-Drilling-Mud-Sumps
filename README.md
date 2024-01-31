@@ -4,7 +4,7 @@ This page contains all scripts that is used in my master thesis.
 As I have used two different coding types/programs, Python and Google Earth Engenine (which uses JavaScript), I have created two folders.
 In these folders are the script placed for the respective coding type.
 
-In the Google Earth Engine scripts folder the scripts are txt files, due to not downloading the code from the GEE site
+In the Google Earth Engine scripts folder the scripts are txt files, due to not being able to download the code from the GEE site.
 The files are: Temperature_and_Precipitation.txt for the temperature and precipition script, Elevation_and_Slope.txt for the elevation and slope script
 and Snowfall.txt for the snowfall script.
 
