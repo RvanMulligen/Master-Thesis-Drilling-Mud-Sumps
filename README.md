@@ -11,5 +11,6 @@ and Snowfall.txt for the snowfall script.
 In the Python scripts folder the scripts are .py or .ipynb.
 The files are: surfacewater.py for the water occurence, soilgrids.py for downloading the SoilGrids maps, soil.py for the pH and nitrogen, carbon.py for
 the SOC and k-means.ipynb for the k-means clustering analysis.
+    
 As I had trouble with the k-means analysis using the python version (3.8.13) installed on my computer, the k-means analysis was done with Google Colab. As the script of 
 the k-means analysis is created in Google Colab, i would suggest to open the script in Google Colab.
