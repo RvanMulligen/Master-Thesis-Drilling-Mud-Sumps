@@ -1,5 +1,5 @@
 # Master-Thesis-Drilling-Mud-Sumps
-This page is created by me, Renate van Mulligen, for my Master Thesis.
+This page is created by me, Renate van Mulligen, for my Master Thesis about drilling mud sumps.
 This page contains all scripts that are used in my master thesis.
 As I have used two different coding types/programs, Python and Google Earth Engenine (which uses JavaScript), I have created two folders.
 In these folders the scripts are placed for the respective coding type.
