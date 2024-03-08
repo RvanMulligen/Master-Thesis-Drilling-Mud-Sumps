@@ -13,7 +13,8 @@ This script consists of 4 parts:
 3. Finding the optimal amount of clusters for the clustering analysis
 4. Performing the cluster analysis and showing the results in a polar plot
 """
-#%
+
+#%%
 ## 1. Installing an importing the used packages
 In the follwing part, the packeges used in this script are installed and imported. As Google colab doesn't have all the packages used, installation of those packages is necesarry. The package that is installed is kneed. Besides installing, the plotly package used is upgraded. Also, as Google colab uses Google Drive as import and export medium, I connected to my google drive.
 """
