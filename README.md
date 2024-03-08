@@ -8,3 +8,4 @@ In the Google Earth Engine scripts folder the scripts are txt files, due to not 
 The files are: Temperature_and_Precipitation.txt for the temperature and precipition script, Elevation_and_Slope.txt for the elevation and slope script
 and Snowfall.txt for the snowfall script.
 
+In the Python scripts folder the scripts are .py or ibpy. 
